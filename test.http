@@ -1,0 +1,36 @@
+###
+# Legge tutti gli utenti
+###
+GET http://localhost:5000/items
+
+###
+# Legge un utente specifico (id=2)
+###
+GET http://localhost:5000/items/2
+
+###
+# Inserisce un nuovo utente
+###
+POST http://localhost:5000/items
+Content-Type: application/json
+
+{
+    "name":"Pippo",
+    "eta":30
+}
+
+###
+# Modifica un utente presente nel DB (id=5)
+###
+PUT http://localhost:5000/items/5
+Content-Type: application/json
+
+{
+    "name":"Pippo",
+    "eta":20
+}
+
+###
+# Cancella un utente specificato (id=5)
+###
+DELETE http://localhost:5000/items/5
