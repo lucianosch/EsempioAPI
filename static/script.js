@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:5000/items'; // Modifica con il tuo endpoint API
+const apiUrl = 'http://127.0.0.1:5000/items'; // Modifica con il tuo endpoint API
 
 // Funzione per ottenere e visualizzare gli utenti
 function fetchUtenti() {

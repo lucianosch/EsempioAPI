@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test API Utenti</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gestione Utenti</h1>
+        <div>
+            <h2>Aggiungi Utente</h2>
+            <input type="text" id="name" placeholder="Nome">
+            <input type="number" id="eta" placeholder="Età">
+            <button onclick="addUtente()">Aggiungi</button>
+        </div>
+        <div>
+            <h2>Utenti Esistenti</h2>
+            <ul id="userList"></ul>
+        </div>
+        <div>
+            <h2>Aggiorna Utente</h2>
+            <input type="number" id="updateId" placeholder="ID Utente">
+            <input type="text" id="updateName" placeholder="Nuovo Nome">
+            <input type="number" id="updateEta" placeholder="Nuova Età">
+            <button onclick="updateUtente()">Aggiorna</button>
+        </div>
+        <div>
+            <h2>Elimina Utente</h2>
+            <input type="number" id="deleteId" placeholder="ID Utente">
+            <button onclick="deleteUtente()">Elimina</button>
+        </div>
+    </div>
+    <script src="static/script.js"></script>
+</body>
+</html>

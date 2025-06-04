@@ -19,7 +19,7 @@ def check_id(id):
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('index_2.html')
 
 @app.route('/items', methods=['GET','POST'])
 def elencaUtenti():
@@ -34,7 +34,8 @@ def elencaUtenti():
         db.commit()
         db.close()
         retval = data
-        return f'{retval} aggiunto'
+        return jsonify({"message": "Utente aggiunto con successo"}), 201
+        # return f'{retval} aggiunto'
 
     query = "SELECT * FROM USERS"
     cursor = db.cursor()
@@ -60,7 +61,8 @@ def elencaUtente(id):
 def cancellaUtente(id):
     righe = check_id(id)
     if righe:
-        retval = {k:v for k,v in zip(righe[0].keys(),righe[0])}
+        # retval = {k:v for k,v in zip(righe[0].keys(),righe[0])}
+        retval = {"message": "Utente eliminato con successo"}
         db = get_db()
         query = "DELETE FROM users WHERE id=?"
         cursor = db.cursor()
@@ -68,15 +70,17 @@ def cancellaUtente(id):
         db.commit()
         db.close()
     else:
-        retval = "Utente non trovato"
-    return f'{retval} cancellato'
+        retval = {"message":"Utente non trovato"}
+    # return f'{retval} cancellato'
+    return jsonify(retval)
 
 @app.route('/items/<int:id>', methods=['PUT'])
 def aggiornaUtente(id):
     righe = check_id(id)
     if righe:
         data = request.json
-        retval = {k:v for k,v in zip(righe[0].keys(),righe[0])}
+        #retval = {k:v for k,v in zip(righe[0].keys(),righe[0])}
+        retval = {"message": "Utente aggiornato con successo"}
         query = "UPDATE users set name=?, eta=? WHERE id=?"
         db = get_db()
         db.execute(query,(data.get('name'),data.get('eta'),id))
@@ -84,6 +88,7 @@ def aggiornaUtente(id):
         db.close()
     else:
         retval = 'Utente non trovato'
-    return f'{retval} aggiornato'
+    # return f'{retval} aggiornato'
+    return jsonify(retval)
 
 app.run(debug=True)
