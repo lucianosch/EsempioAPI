@@ -6,7 +6,7 @@ app = Flask(__name__)
 app.secret_key = b'Fr@s3 S3Gr3t#_H2O'
 
 def get_db():
-    conn = sqlite3.connect('db/blog.db')
+    conn = sqlite3.connect('db/esempio.db')
     conn.row_factory = sqlite3.Row  # Permette accesso a colonne come chiavi
     return conn
 
@@ -19,7 +19,7 @@ def check_id(id):
 
 @app.route('/')
 def home():
-    return render_template('index_2.html')
+    return render_template('index.html')
 
 @app.route('/items', methods=['GET','POST'])
 def elencaUtenti():
